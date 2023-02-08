@@ -6,17 +6,26 @@ import { Form } from './form/Form';
 import { SearchInput } from './searchInput/SearchInput';
 
 import { nanoid } from 'nanoid';
-const INTIAL_VALUE = [
-  { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-  { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-  { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-  { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-];
+// const INTIAL_VALUE = [
+//   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+//   { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+//   { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+//   { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+// ];
 export class App extends Component {
   state = {
-    contacts: INTIAL_VALUE,
+    contacts: [],
     filter: '',
   };
+  componentDidMount() {
+    const storedContacts = JSON.parse(localStorage.getItem('contacts'));
+    if (storedContacts) this.setState({ contacts: storedContacts });
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
   handleSearchInput = event => {
     this.setState({ filter: event.currentTarget.value });
   };
