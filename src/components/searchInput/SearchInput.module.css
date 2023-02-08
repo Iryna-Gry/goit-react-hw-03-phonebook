@@ -1,0 +1,27 @@
+.Search__title {
+  font-size: 16px;
+  font-family: Sofia Sans, sans-serif;
+}
+.Search__input {
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  border: 1px solid rgba(173, 204, 204, 0.281);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.Search__input:focus {
+  outline: 1px solid rgb(173, 204, 204);
+}
+@media screen and (min-width: 1200px) {
+  .Search__input {
+    padding: 10px 15px;
+    font-size: 18px;
+  }
+}
+.Search__container {
+  width: 100%;
+  box-sizing: border-box;
+}
